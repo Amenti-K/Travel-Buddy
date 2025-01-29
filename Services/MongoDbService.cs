@@ -12,5 +12,5 @@ public class MongoDbService
     }
 
     public IMongoCollection<User> Users => _database.GetCollection<User>("Users");
-    // public IMongoCollection<Trip> Trips => _database.GetCollection<Trip>("Trips");
+    public IMongoCollection<Trip> Trips => _database.GetCollection<Trip>("Trips");
 }

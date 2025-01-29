@@ -6,12 +6,9 @@ builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("Mo
 // Register MongoDB service
 builder.Services.AddSingleton<MongoDbService>();
 
-// Register user and trip services
+// Register UserService and TripService with Dependency Injection
 builder.Services.AddScoped<IUserService, UserService>();
-//builder.Services.AddScoped<ITripsService, TripsService>();
-
-// Register UserService with Dependency Injection
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITripService, TripService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
