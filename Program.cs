@@ -2,7 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Register UserService with Dependency Injection
 builder.Services.AddScoped<IUserService, UserService>();
-
+builder.Services.AddScoped<ITripService, TripService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
