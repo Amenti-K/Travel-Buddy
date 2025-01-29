@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\PROJECTS\\Event Driven programing\\Travel-Buddy\\Travel-Buddy.csproj": {}
+    "C:\\Users\\HP\\Desktop\\elective\\Travel-Buddy\\Travel-Buddy.csproj": {}
   },
   "projects": {
-    "F:\\PROJECTS\\Event Driven programing\\Travel-Buddy\\Travel-Buddy.csproj": {
+    "C:\\Users\\HP\\Desktop\\elective\\Travel-Buddy\\Travel-Buddy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\PROJECTS\\Event Driven programing\\Travel-Buddy\\Travel-Buddy.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\elective\\Travel-Buddy\\Travel-Buddy.csproj",
         "projectName": "Travel-Buddy",
-        "projectPath": "F:\\PROJECTS\\Event Driven programing\\Travel-Buddy\\Travel-Buddy.csproj",
-        "packagesPath": "C:\\Users\\ament\\.nuget\\packages\\",
-        "outputPath": "F:\\PROJECTS\\Event Driven programing\\Travel-Buddy\\obj\\",
+        "projectPath": "C:\\Users\\HP\\Desktop\\elective\\Travel-Buddy\\Travel-Buddy.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\elective\\Travel-Buddy\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ament\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
