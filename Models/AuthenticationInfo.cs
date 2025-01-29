@@ -1,9 +1,12 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 public class User
 {
-    [Key] // Marks this as the primary key
+    [BsonId]
+    [BsonRepresentation(BsonType.String)] // Store Guid as a string in MongoDB
     public Guid UserId { get; set; } = Guid.NewGuid();
 
     [Required]
