@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 
 public interface IUserService{
-    List<User> GetAllUsers();
-    User GetUserByEmail(string email);
-    bool AddUser(User newUser);
-    bool UpdateUser(string email, User updatedUser);
-    bool DeleteUser(string email);
+    Task<List<User>> GetAllUsers();
+    Task<User> GetUserByEmail(string email);
+    Task<bool> AddUser(User newUser);
+    Task<bool> UpdateUser(string email, User updatedUser);
+    Task<bool> DeleteUser(string email);
 }

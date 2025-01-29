@@ -103,3 +103,9 @@ F:\PROJECTS\Event Driven programing\Travel-Buddy\obj\Debug\net9.0\compressed\c4q
 F:\PROJECTS\Event Driven programing\Travel-Buddy\obj\Debug\net9.0\compressed\a052ppesld-m9qm4tazc0.gz
 F:\PROJECTS\Event Driven programing\Travel-Buddy\obj\Debug\net9.0\compressed\b1i80xgtph-jjsuc0puko.gz
 F:\PROJECTS\Event Driven programing\Travel-Buddy\obj\Debug\net9.0\compressed\4njbt43bi0-9vr69e8ynj.gz
+F:\PROJECTS\Event Driven programing\Travel-Buddy\bin\Debug\net9.0\DnsClient.dll
+F:\PROJECTS\Event Driven programing\Travel-Buddy\bin\Debug\net9.0\MongoDB.Bson.dll
+F:\PROJECTS\Event Driven programing\Travel-Buddy\bin\Debug\net9.0\MongoDB.Driver.dll
+F:\PROJECTS\Event Driven programing\Travel-Buddy\bin\Debug\net9.0\SharpCompress.dll
+F:\PROJECTS\Event Driven programing\Travel-Buddy\bin\Debug\net9.0\Snappier.dll
+F:\PROJECTS\Event Driven programing\Travel-Buddy\bin\Debug\net9.0\ZstdSharp.dll

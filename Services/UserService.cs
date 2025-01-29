@@ -1,55 +1,44 @@
-using System;
+using MongoDB.Driver;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 public class UserService : IUserService
 {
-    private static List<User> users = new List<User>
-    {
-        new User { UserId = Guid.NewGuid(), Email = "john@example.com", UserName = "JohnDoe", PhoneNumber = "1234567890", Password = "pass123" },
-        new User { UserId = Guid.NewGuid(), Email = "jane@example.com", UserName = "JaneDoe", PhoneNumber = "0987654321", Password = "pass456" },
-        new User { UserId = Guid.NewGuid(), Email = "alex@example.com", UserName = "AlexSmith", PhoneNumber = "1122334455", Password = "pass789" }
-    };
+    private readonly IMongoCollection<User> _users;
 
-    public List<User> GetAllUsers()
+    public UserService(MongoDbService dbService)
     {
-        return users;
+        _users = dbService.Users;
     }
 
-    public User GetUserByEmail(string email)
+    public async Task<List<User>> GetAllUsers()
     {
-        return users.FirstOrDefault(u => u.Email == email);
+        return await _users.Find(user => true).ToListAsync();
     }
 
-    public bool AddUser(User newUser)
+    public async Task<User> GetUserByEmail(string email)
     {
-        if (users.Any(u => u.Email == newUser.Email || u.PhoneNumber == newUser.PhoneNumber))
-        {
-            return false; // User already exists
-        }
+        return await _users.Find(user => user.Email == email).FirstOrDefaultAsync();
+    }
 
-        newUser.UserId = Guid.NewGuid();
-        users.Add(newUser);
+    public async Task<bool> AddUser(User newUser)
+    {
+        var existingUser = await GetUserByEmail(newUser.Email);
+        if (existingUser != null) return false; // Prevent duplicate emails
+
+        await _users.InsertOneAsync(newUser);
         return true;
     }
 
-    public bool UpdateUser(string email, User updatedUser)
+    public async Task<bool> UpdateUser(string email, User updatedUser)
     {
-        var user = users.FirstOrDefault(u => u.Email == email);
-        if (user == null) return false;
-
-        user.UserName = updatedUser.UserName;
-        user.PhoneNumber = updatedUser.PhoneNumber;
-        user.Password = updatedUser.Password;
-        return true;
+        var result = await _users.ReplaceOneAsync(u => u.Email == email, updatedUser);
+        return result.IsAcknowledged && result.ModifiedCount > 0;
     }
 
-    public bool DeleteUser(string email)
+    public async Task<bool> DeleteUser(string email)
     {
-        var user = users.FirstOrDefault(u => u.Email == email);
-        if (user == null) return false;
-
-        users.Remove(user);
-        return true;
+        var result = await _users.DeleteOneAsync(u => u.Email == email);
+        return result.IsAcknowledged && result.DeletedCount > 0;
     }
 }

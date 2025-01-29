@@ -1,5 +1,15 @@
 var builder = WebApplication.CreateBuilder(args);
 
+// Bind MongoDB settings
+builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDB"));
+
+// Register MongoDB service
+builder.Services.AddSingleton<MongoDbService>();
+
+// Register user and trip services
+builder.Services.AddScoped<IUserService, UserService>();
+//builder.Services.AddScoped<ITripsService, TripsService>();
+
 // Register UserService with Dependency Injection
 builder.Services.AddScoped<IUserService, UserService>();
 
