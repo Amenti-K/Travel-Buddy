@@ -16,36 +16,82 @@ public class UserController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
     {
-        return Ok(await _userService.GetAllUsers());
+        try
+        {
+            var users = await _userService.GetAllUsers();
+            return Ok(users);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
     }
 
     [HttpGet("{email}")]
     public async Task<ActionResult<User>> GetUserByEmail(string email)
     {
-        var user = await _userService.GetUserByEmail(email);
-        if (user == null) return NotFound();
-        return Ok(user);
+        try
+        {
+            var user = await _userService.GetUserByEmail(email);
+            if (user == null) return NotFound();
+            return Ok(user);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
     }
 
     [HttpPost]
     public async Task<ActionResult> AddUser([FromBody] User user)
     {
-        var added = await _userService.AddUser(user);
-        if (!added) return Conflict("User with this email already exists.");
-        return CreatedAtAction(nameof(GetUserByEmail), new { email = user.Email }, user);
+        try
+        {
+            // Validate the user input
+            var (isValid, errors) = ValidationService.ValidateUser(user);
+            if (!isValid) return BadRequest(errors);
+
+            var added = await _userService.AddUser(user);
+            if (!added) return Conflict("User with this email already exists.");
+            return CreatedAtAction(nameof(GetUserByEmail), new { email = user.Email }, user);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
     }
 
     [HttpPut("{email}")]
     public async Task<ActionResult> UpdateUser(string email, [FromBody] User user)
     {
-        if (!await _userService.UpdateUser(email, user)) return NotFound();
-        return Ok();
+        try
+        {
+            // Validate the user input
+            var (isValid, errors) = ValidationService.ValidateUser(user);
+            if (!isValid) return BadRequest(errors);
+
+            var updated = await _userService.UpdateUser(email, user);
+            if (!updated) return NotFound();
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
     }
 
     [HttpDelete("{email}")]
     public async Task<ActionResult> DeleteUser(string email)
     {
-        if (!await _userService.DeleteUser(email)) return NotFound();
-        return Ok();
+        try
+        {
+            var deleted = await _userService.DeleteUser(email);
+            if (!deleted) return NotFound();
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
     }
 }
