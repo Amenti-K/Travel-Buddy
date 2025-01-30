@@ -1022,19 +1022,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ament\\.nuget\\packages\\": {}
+    "C:\\Users\\abeni\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\PROJECTS\\Event Driven programing\\Travel-Buddy\\Travel-Buddy.csproj",
+      "projectUniqueName": "D:\\electiv\\Travel-Buddy\\Travel-Buddy.csproj",
       "projectName": "Travel-Buddy",
-      "projectPath": "F:\\PROJECTS\\Event Driven programing\\Travel-Buddy\\Travel-Buddy.csproj",
-      "packagesPath": "C:\\Users\\ament\\.nuget\\packages\\",
-      "outputPath": "F:\\PROJECTS\\Event Driven programing\\Travel-Buddy\\obj\\",
+      "projectPath": "D:\\electiv\\Travel-Buddy\\Travel-Buddy.csproj",
+      "packagesPath": "C:\\Users\\abeni\\.nuget\\packages\\",
+      "outputPath": "D:\\electiv\\Travel-Buddy\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ament\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\abeni\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
